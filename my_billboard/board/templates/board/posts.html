@@ -1,0 +1,62 @@
+{% extends 'board/base.html' %}
+
+{% block content %}
+<!--<ul>-->
+<!--    <li><h2>Объявления списком</h2></li>-->
+<!--    <br>-->
+<!--    <ul>-->
+<!--        {% for post in page_obj %}-->
+<!--        <li><p>Автор: {{post.author}}: <a href="{{ post.get_absolute_url }}"> Редактировать:-->
+<!--            {{post.title}}</a></p>-->
+<!--             <img width="150px" height="100px" src="/media/{{post.image}}">-->
+<!--            <p></p>-->
+<!--            <p>{{post.text}}</p>-->
+<!--            <p>{{post.created_at}}</p>-->
+<!--        </li>-->
+<!--        <hr>-->
+<!--        {% endfor %}-->
+<!--    </ul>-->
+
+<div class="container">
+    <div class="row gy-5">
+        <p></p>
+        {% for post in page_obj %}
+        <div class="col-6 bg-light text-dark text-center">
+            <h3 class="text-center  my-3">Автор {{post.author}}: <a href="{{ post.get_absolute_url }}">
+                <i>{{post.title}}</i></a></h3>
+            <div class="text-center">
+                <img width="200px" height="150px" src="/media/{{post.image}}">
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-images my-3"
+                 viewBox="0 0 16 16">
+                <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+                <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1z"/>
+            </svg>
+            <p>{{post.text}}</p>
+            <p>Дата создания поста: <i>{{post.created_at}}</i></p>
+            <hr>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo;Первая</a>
+        <a href="?page={{ page_obj.previous_page_number}}">Предыдущая</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{page_obj.number}} из {{page_obj.paginator.num_pages}}.
+        </span>>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number }}">Следующая</a>
+        <a href="?page={{page_obj.paginator.num_pages }}">Последующяя&raquo;</a>
+        {% endif %}
+<hr>
+<a href="{% url 'board:index'%}"><h3>На главную страницу</h3></a>
+
+{% endblock content %}
+    <a href="{% url 'board:index' %}"><h3>На главную страницу</h3></a>

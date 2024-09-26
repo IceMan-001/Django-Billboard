@@ -1,0 +1,41 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+
+<!--<div class="container">-->
+<!--    <form class="row" action="" method="post">-->
+<!--        <legend><h2 class="col-12 mb-2 mx-3">{{title}}: <i>{{ user.username }}</i></h2></legend>-->
+<!--        <label>{% csrf_token %}</label>-->
+<!--        <label>{{ form.as_p }}</label>-->
+<!--        <label>-->
+<!--            <button type="submit">Редактировать</button>-->
+<!--        </label>-->
+<!--    </form>-->
+<!--    <br>-->
+<!--    <a href="{% url 'board:index'%}"><h3>На главную страницу</h3></a>-->
+<!--</div>-->
+<div class="container">
+<form class="row" method="post">
+    {% csrf_token %}
+    <!--  {{ form.as_p }}-->
+    <div class="col-6 mx-5">
+        <h2 class="col-12 mb-2 mx-3">Редактировать данные пользователя <i>{{user.username}}</i></h2>
+        <div class="mb-4 form-control-lg">
+            <i><label class="form-label">{{form.first_name.label}}: </label></i>
+            <p>{{form.first_name}}</p>
+            <i><label class="form-label">{{form.last_name.label}}:</label></i>
+            <p>{{form.last_name}}</p>
+            <i><label class="form-label">{{form.phone.label}}:</label></i>
+            <p>{{form.phone}}</p>
+            <i><label class="form-label">{{form.email.label}}:</label></i>
+            <p>{{form.email}}</p>
+        </div>
+        <button type="submit" class="btn btn-primary col-4 mb-2 mx-3"><i class="bi bi-images mx-2"></i>Редактировать</button>
+    </div>
+</form>
+</div>
+
+
+{% endblock content %}
+
+

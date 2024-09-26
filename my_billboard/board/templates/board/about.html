@@ -1,0 +1,28 @@
+{% extends 'board/base.html' %}
+
+{% block content %}
+<link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<style>
+    .style-2 {
+    list-style-type: "\1F7E2";
+    }
+    .style-1 {
+    list-style-type: "\01f449";
+    }
+    html, body {
+    background-color: #75b798;
+    }
+</style>
+<ul>
+<li class="style-1"><h2>Это страница о нас</h2></li>
+    <hr>
+<br>
+    <ul>
+    <li class="style-2"><h3>Автор - <i>{{name}} {{lastname}}</i></h3></li>
+    <li class="style-2"><h3>Электронный адрес - <i>{{email}}</i></h3></li>
+    </ul>
+</ul>
+<br>
+<a href="{% url 'board:index'%}"><h4>На главную страницу</h4></a>
+{% endblock content %}

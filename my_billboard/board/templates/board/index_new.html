@@ -1,0 +1,119 @@
+{% extends 'board/base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/header.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}" type="text/css">
+<style>
+    body {
+        background-image: url("{% static 'img/priroda-66.jpg' %}");
+        /*background-image: url( "/static/img/priroda-66.jpg");*/
+        background-repeat: repeat;
+        max-width: 1600px;
+    }
+</style>
+
+
+<header>
+    <div class="logo">
+        <a href="#"><img src="{% static 'img/K_3.jpg' %}" alt="Logo"></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{% url 'board:post_list_in_table'%}">Объявления в виде таблицы</a></li>
+            <li><a href="{% url 'board:post_list'%}">Все объявления</a></li>
+            <li><a href="{% url 'board:add_post'%}">Создать новое объявление</a></li>
+            <li><a href="{% url 'board:about'%}">О сайте</a></li>
+            <li><a href="{% url 'board:contacts'%}">Контакты</a></li>
+            <li><a href="{% url 'users:register' %}">Регистрация</a></li>
+       </ul>
+    </nav>
+</header>
+<div class="one">
+    <main>
+        {% for post in posts %}
+        <section class="container Row">
+            <article class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12 col-sm-4 image">
+                        {% if post.image %}
+                        <img src="{{post.image.url}}">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-12 col-sm-4">
+                        <h4 class="text-uppercase">Объявление №{{post.id}}</h4>
+                        <br>
+                        <p>Автор: {{post.author}}: <a href="{% url 'board:post_detail' pk=post.id %}">
+                            Редактировать: {{post.title}}</a></p>
+                        <br>
+                        <p>{{post.text}}</p>
+                        <p>{{post.created_at}}</p>
+                        <p>Сайт: <i>{{post.url_adders}}</i></p>
+                        <a href="{{post.url_adders}}">Подробнее...</a>
+                        <br>
+                    </div>
+                </div>
+            </article>
+        </section>
+        {% endfor %}
+    </main>
+</div>
+<footer>
+    <div class="social">
+        <p>Follow me on social media</p>
+        <ul class="wrapper">
+            <a href="https://vk.com/">
+                <li class="icon linkedin">
+                    <span class="tooltip">VK</span>
+                    <span><i class="fab fa-vk"></i></span>
+                </li>
+            </a>
+            <a href="https://www.youtube.com/">
+                <li class="icon youtube">
+                    <span class="tooltip">YouTube</span>
+                    <span><i class="fab fa-youtube"></i></span>
+                </li>
+            </a>
+            <a href="https://github.com/">
+                <li class="icon github">
+                    <span class="tooltip">GitHub</span>
+                    <span><i class="fab fa-github"></i></span>
+                </li>
+            </a>
+            <a href="#">
+                <li class="icon facebook">
+                    <span class="tooltip">Facebook</span>
+                    <span><i class="fab fa-facebook-f"></i></span>
+                </li>
+            </a>
+            <a href="#">
+                <li class="icon instagram">
+                    <span class="tooltip">Instagram</span>
+                    <span><i class="fab fa-instagram"></i></span>
+                </li>
+            </a>
+            <a href="#">
+                <li class="icon twitter">
+                    <span class="tooltip">Twitter</span>
+                    <span><i class="fab fa-twitter"></i></span>
+                </li>
+            </a>
+            <a href="https://codepen.io/trending">
+                <li class="icon github">
+                    <span class="tooltip">CodePen</span>
+                    <span><i class="fab fa-codepen"></i></span>
+                </li>
+            </a>
+        </ul>
+    </div>
+    <div class="final_text"></div>
+    <p>Copyright &copy; All rights reserved</p>
+</footer>
+
+<script src="{% static 'javaScript/header.js' %}"></script>
+
+</html>
+{% endblock content %}
+
+
+

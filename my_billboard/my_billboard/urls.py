@@ -15,8 +15,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from board.views import root
+from my_billboard import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', root),
     path('admin/', admin.site.urls),
+    path('board/', include('board.urls')),
+    path('users/', include('users.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler403 = "board.views.forbidden"
+handler404 = "board.views.page_not_found"
+handler500 = "board.views.server_error"
