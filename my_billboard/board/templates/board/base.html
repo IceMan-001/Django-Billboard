@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
@@ -26,7 +26,10 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'board:post_list' %}">Посты</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'board:add_post' %}">Создать новый пост</a>
+                    <a class="nav-link" href="{% url 'board:add_post' %}">Создать новое объявление</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'board:about' %}">О нас</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

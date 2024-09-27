@@ -16,9 +16,9 @@
 <p>Создан: {{post.created_at}}</p>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Удалить</button>
+        <button type="submit" class="btn btn-danger" >Удалить</button>
         <a href="{% url 'board:post_list' %}">
-            <button type="button">Отменить</button>
+            <button type="button" class="btn btn-primary">Отменить</button>
         </a>
     </form>
 

@@ -2,21 +2,6 @@
 {% load static %}
 {% block content %}
 
-<!--<style>-->
-<!--    body {-->
-<!--    height: 20%;-->
-<!--    background : linear-gradient(to right, #00ffd0, #c0faff);-->
-<!--}-->
-<!--</style>-->
-<!--<h2>Это главная страница</h2>-->
-<!--<div class="main">-->
-<!--    <a href="{% url 'board:post_list' %}"><h3>1. Все посты</h3></a>-->
-<!--    <a href="{% url 'board:post_list_in_table' %}"><h3>2. Посты в виде таблицы</h3></a>-->
-<!--    <a href="{% url 'board:add_post' %}"><h3>3. Создать новый пост</h3></a>-->
-<!--    <a href="{% url 'board:about' %}"><h3>4. О сайте</h3></a>-->
-<!--    <a href="{% url 'board:contacts' %}"><h3>5. Контакты</h3></a>-->
-<!--</div>-->
-
 <style>
     body {
     background-color: beige!important;
@@ -34,49 +19,20 @@ h2 {
     text-decoration: underline;
 }
 </style>
-<!--<div class="container my-5">-->
 
-<!--    <div class="row gy-5">-->
-<!--        <p></p>-->
-<!--        {% for post in posts %}-->
-<!--        <div class="col-6 bg-white text-dark text-center">-->
-<!-- <h3 class="text-center  my-3">Автор {{post.author}}: <a href="{{ post.get_absolute_url }}">-->
-
-
-<!--            <div class="text-center">-->
-<!--                <img width="150px" height="100px" src="/media/{{post.image}}" class="rounded" alt="#">-->
-<!--            </div>-->
-
-<!--                {{post.title}}</a></p></h4>-->
-<!--            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-images"-->
-<!--                 viewBox="0 0 16 16">-->
-<!--                <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>-->
-<!--                <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1z"/>-->
-<!--            </svg>-->
-<!--            <p>{{post.text}}</p>-->
-
-<!--            <button type="button" class="btn btn-primary"><i class="bi bi-images"></i> Edit</button>-->
-<!--            <button type="button" class="btn btn-danger"><i class="bi bi-x-octagon-fill"></i> Delete</button>-->
-
-<!--            <hr>-->
-<!-- {% endfor %}-->
-<!--        </div>-->
-
-<!--    </div>-->
-<!--</div>-->
 <div class="container">
     <div class="row gy-5">
         <p></p>
         {% for post in posts %}
         <div class="col-6 bg-light text-dark text-center">
              <h4 class="text-uppercase">Объявление №{{post.id}}</h4>
-            <h4 class="text-center  my-3">Автор {{post.author}}: <a href="{{ post.get_absolute_url }}">
-                <i>{{post.title}}</i></a></h4>
+            <h4 class="text-center  my-3">Автор {{post.author}}</h4>
+            <h4>Редактировать объявление: <a href="{{ post.get_absolute_url }}"><i>{{post.title}}</i></a></h4>
+           <p></p>
             <div class="text-center">
                 {% if post.image %}
                         <img width="200px" height="150px" src="{{post.image.url}}">
                 {% endif %}
-<!--                <img width="200px" height="150px" src="/media/{{post.image}}">-->
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-images my-3"
                  viewBox="0 0 16 16">
@@ -84,9 +40,8 @@ h2 {
                 <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1z"/>
             </svg>
             <p>{{post.text}}</p>
-
             <p>Дата создания поста: <i>{{post.created_at}}</i></p>
-            <a href="{{post.url_adders}}">Подробнее...</a>
+            <a href="{{ post.url_adders }}">Подробнее...</a>
             <hr>
         </div>
         {% endfor %}

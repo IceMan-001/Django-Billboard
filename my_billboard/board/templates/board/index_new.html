@@ -1,7 +1,10 @@
-{% extends 'board/base.html' %}
 {% load static %}
-{% block content %}
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
 <link rel="stylesheet" href="{% static 'css/header.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/footer.css' %}" type="text/css">
 <style>
@@ -13,6 +16,7 @@
     }
 </style>
 
+<body>
 
 <header>
     <div class="logo">
@@ -29,6 +33,8 @@
        </ul>
     </nav>
 </header>
+
+
 <div class="one">
     <main>
         {% for post in posts %}
@@ -43,7 +49,7 @@
                     <div class="col-md-12 col-sm-4">
                         <h4 class="text-uppercase">Объявление №{{post.id}}</h4>
                         <br>
-                        <p>Автор: {{post.author}}: <a href="{% url 'board:post_detail' pk=post.id %}">
+                        <p>Автор: {{post.author}}: <a href="{{ post.get_absolute_url }}">
                             Редактировать: {{post.title}}</a></p>
                         <br>
                         <p>{{post.text}}</p>
@@ -58,6 +64,8 @@
         {% endfor %}
     </main>
 </div>
+
+
 <footer>
     <div class="social">
         <p>Follow me on social media</p>
@@ -112,8 +120,9 @@
 
 <script src="{% static 'javaScript/header.js' %}"></script>
 
+</body>
 </html>
-{% endblock content %}
+
 
 
 

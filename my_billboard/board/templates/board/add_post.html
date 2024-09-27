@@ -2,17 +2,37 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<link href="{% static 'css/form.css' %}" rel="stylesheet">
 
 <h2 style="text-align: center;">Добавить новое объявление</h2>
 <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
 <!--    {{ form.as_p }}-->
-    {% crispy form %}
-    <button type="submit">Создать объявление</button>
+<!--    {% crispy form %}-->
+
+    <div class="container p-5">
+      <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+               {{form.author|as_crispy_field}}
+            </div>
+            <div class="col-lg-6 col-md-12">
+              {{form.title|as_crispy_field}}
+            </div>
+          </div>
+          <div class="row">
+              {{form.text|as_crispy_field}}
+          </div>
+          <div class="row">
+              {{form.image|as_crispy_field}}
+          </div>
+             <div class="row">
+              {{form.url_adders|as_crispy_field}}
+          </div>
+          <button type="submit" class="btn btn-primary">Добавить</button>
+          </form>
+      </div>
 </form>
 
-<a href="{% url 'board:index'%}"><h3>На главную страницу</h3></a>
+<a href="{% url 'board:index'%}"><h4>На главную страницу</h4></a>
 {% endblock content %}
