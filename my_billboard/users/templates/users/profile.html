@@ -2,15 +2,24 @@
 
 {% block content %}
 
-<h2>Информация о пользователе {{ user.username }}</h2>
-<hr>
-<div>Логин - {{ user.username }}</div>
-<div>Имя - {{ user.first_name }}</div>
-<div>Фамилия - {{ user.last_name }}</div>
-<div>Эл.адрес - {{ user.email }}</div>
-<div>Телефон - {{ user.phone }}</div>
-<hr>
-<div>Дата регистрации - {{ user.date_joined|date:'d-m-Y H:i'}}</div>
+<!--<h2>Информация о пользователе {{ user.username }}</h2>-->
+<!--<hr>-->
+<!--<div>Логин - {{ user.username }}</div>-->
+<!--<div>Имя - {{ user.first_name }}</div>-->
+<!--<div>Фамилия - {{ user.last_name }}</div>-->
+<!--<div>Эл.адрес - {{ user.email }}</div>-->
+<!--<div>Телефон - {{ user.phone }}</div>-->
+<!--<hr>-->
+<!--<div>Дата регистрации - {{ user.date_joined|date:'d-m-Y H:i'}}</div>-->
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item"><h3>Информация о пользователе <i class="text-primary">{{ user.username }}</i></h3></li>
+  <li class="list-group-item">Логин - {{ user.username }}</li>
+  <li class="list-group-item">Имя - {{ user.first_name }}</li>
+  <li class="list-group-item">Эл.адрес - {{ user.email }}</li>
+  <li class="list-group-item">Телефон - {{ user.phone }}</li>
+  <li class="list-group-item">Дата регистрации - {{ user.date_joined|date:'d-m-Y H:i'}}</li>
+</ul>
 
 <a href="{% url 'users:user_edit' pk=user.id%}" class="btn btn-primary">Редактировать</a>
 
