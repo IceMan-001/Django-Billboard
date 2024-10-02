@@ -21,7 +21,7 @@
         <p></p>
         {% for post in page_obj %}
         <div class="col-6 bg-light text-dark text-center">
-            <h3 class="text-center  my-3">Автор {{post.author}}: <a href="{{ post.get_absolute_url }}">
+            <h3 class="text-center  my-3">Автор объявления {{post.author}}: <a href="{{ post.get_absolute_url }}">
                 <i>{{post.title}}</i></a></h3>
             <div class="text-center">
                 <img width="200px" height="150px" src="/media/{{post.image}}">
@@ -45,17 +45,13 @@
         <a href="?page=1">&laquo;Первая</a>
         <a href="?page={{ page_obj.previous_page_number}}">Предыдущая</a>
         {% endif %}
-
         <span class="current">
             Страница {{page_obj.number}} из {{page_obj.paginator.num_pages}}.
         </span>>
-
         {% if page_obj.has_next %}
             <a href="?page={{page_obj.next_page_number }}">Следующая</a>
         <a href="?page={{page_obj.paginator.num_pages }}">Последующяя&raquo;</a>
         {% endif %}
-<hr>
-<a href="{% url 'board:index'%}"><h3>На главную страницу</h3></a>
-
+    </span>
+</div>
 {% endblock content %}
-    <a href="{% url 'board:index' %}"><h3>На главную страницу</h3></a>

@@ -4,11 +4,42 @@
 
 <h2>Регистрация пользователя</h2>
 <form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ crispy register_form }}
+<!--    {% csrf_token %}-->
+<!--    {{ register_form | crispy}}-->
 
+     <div class="container p-5">
+      <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
 
-    <button type="submit"> Зарегистрироваться</button>
+          <div class="row">
+              {{register_form.username|as_crispy_field}}
+          </div>
+          <div class="row">
+              <div class="col-lg-6 col-md-12">
+               {{register_form.first_name|as_crispy_field}}
+            </div>
+            <div class="col-lg-6 col-md-12">
+              {{register_form.last_name|as_crispy_field}}
+            </div>
+          </div>
+             <div class="row">
+              {{register_form.email|as_crispy_field}}
+          </div>
+             <div class="row">
+              {{register_form.phone|as_crispy_field}}
+          </div>
+        <div class="row">
+              {{register_form.city|as_crispy_field}}
+          </div>
+          <div class="row">
+              {{register_form.password|as_crispy_field}}
+          </div>
+          <div class="row">
+              {{register_form.password2|as_crispy_field}}
+          </div>
+          <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+          </form>
+      </div>
 </form>
 
 {% endblock content %}

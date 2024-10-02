@@ -11,9 +11,11 @@
     <link rel="icon" href="{% static 'favicon/approval-icon.ico' %}"/>
 
 
+
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow p-3 mb-5 bg-body rounded">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'board:index' %}">Главная</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -64,6 +66,73 @@
 </nav>
 {% block content %}
 {% endblock content %}
+
+<footer class="bg-body-tertiary text-center shadow-lg p-3 mb-5 bg-body rounded" style="background-color: rgba(0, 0, 0, 0.05);">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0" >
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a data-mdb-ripple-init
+        class="btn text-white btn-floating m-1"
+        style="background-color: #3b5998;"
+        href="https://t.me/telegram"
+        role="button"><i class="bi bi-telegram"></i>Telegram</a>
+
+      <!-- Twitter -->
+      <a
+        data-mdb-ripple-init
+        class="btn text-white btn-floating m-1"
+        style="background-color: #2e8b57;"
+        href="https://whatsapp.com/"
+        role="button"><i class="bi bi-whatsapp"></i>WhatsApp</a>
+
+      <!-- Google -->
+      <a
+        data-mdb-ripple-init
+        class="btn text-white btn-floating m-1"
+        style="background-color: #dd4b39;"
+        href="https://google.com/"
+        role="button"><i class="bi bi-google"></i>Google</a>
+
+      <!-- Instagram -->
+      <a
+        data-mdb-ripple-init
+        class="btn text-white btn-floating m-1"
+        style="background-color: #3b5998;"
+        href="https://vk.com/"
+        role="button"
+        ><i class="bi bi-instagram"></i>VK</a>
+
+      <!-- Linkedin -->
+      <a
+        data-mdb-ripple-init
+        class="btn text-white btn-floating m-1"
+        style="background-color: #cc0002;"
+        href="https://www.youtube.com/"
+        role="button"
+        ><i class="bi bi-youtube"></i>YouTube</a>
+      <!-- Github -->
+      <a
+        data-mdb-ripple-init
+        class="btn text-white btn-floating m-1"
+        style="background-color: #333333;"
+        href="https://github.com/"
+        role="button"
+        ><i class="bi bi-github"></i>GitHub</a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2024 Copyright:
+    <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
