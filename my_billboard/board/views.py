@@ -112,8 +112,10 @@ def post_detail(request, slug):
 @login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)  # получить объект по ключу
+    print(post, type(post))
     if request.method == 'POST':
         form = PostForm(data=request.POST, instance=post, author=request.user)
+
         if form.is_valid():
             form.save()
             return post_list(request)

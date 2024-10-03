@@ -80,15 +80,15 @@ def user_detail(request, pk):
 
 @login_required
 def user_edit(request, pk):
-    post = get_object_or_404(CustomUser, pk=pk)  # получить объект по ключу
+    user = get_object_or_404(CustomUser, pk=pk)  # получить объект по ключу
     if request.method == 'POST':
-        form = UserRegistrationForm(data=request.POST, instance=post)
+        form = UserRegistrationForm(data=request.POST, instance=user)
         if form.is_valid():
             form.save()
-            return user_detail(request, pk=pk)
+            return user_detail(request)
 
     else:
-        form = UserRegistrationForm(instance=post)
+        form = UserRegistrationForm(instance=user)
     context = {
             'form': form,
             'title': 'Редактировать данные пользователя'
