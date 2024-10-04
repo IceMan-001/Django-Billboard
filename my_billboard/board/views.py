@@ -114,7 +114,7 @@ def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)  # получить объект по ключу
     print(post, type(post))
     if request.method == 'POST':
-        form = PostForm(data=request.POST, instance=post, author=request.user)
+        form = PostForm(data=request.POST, instance=post, author=request.user, files=request.FILES)
 
         if form.is_valid():
             form.save()
