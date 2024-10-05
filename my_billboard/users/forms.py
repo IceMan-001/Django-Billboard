@@ -26,7 +26,7 @@ class UserRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User  # Установка связи между model и User
-        fields = ('username', 'first_name', 'last_name', 'password', 'email', 'phone', 'city')
+        fields = ('username', 'first_name', 'last_name', 'password', 'email', 'phone', 'city', 'image')
 
 
 class CustomPasswordChangeForm(forms.Form):
@@ -47,3 +47,9 @@ class CustomPasswordChangeForm(forms.Form):
             raise forms.ValidationError("Пароли совпадают с текущим")
 
         return cleaned_data
+
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = User  # Установка связи между model и User
+        fields = ('username', 'first_name', 'last_name', 'email', 'phone', 'city', 'image')

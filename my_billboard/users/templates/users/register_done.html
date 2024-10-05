@@ -1,9 +1,10 @@
 {% extends 'users/base.html '%}
-
+{% load static %}
 {% block content %}
 
 <h2> Пользователь {{ new_user.username }} успешно зарегистрирован </h2>
 
+<img width="150px" height="100px" src="/media/{{new_user.image}}">
 <p> Имя - {{ new_user.first_name }} </p>
 <p> Фамилия - {{ new_user.last_name }} </p>
 <p> Email - {{ new_user.email }} </p>

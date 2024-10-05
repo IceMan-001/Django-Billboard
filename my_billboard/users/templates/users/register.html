@@ -15,6 +15,9 @@
               {{register_form.username|as_crispy_field}}
           </div>
           <div class="row">
+              {{register_form.image|as_crispy_field}}
+          </div>
+          <div class="row">
               <div class="col-lg-6 col-md-12">
                {{register_form.first_name|as_crispy_field}}
             </div>
@@ -37,7 +40,7 @@
           <div class="row">
               {{register_form.password2|as_crispy_field}}
           </div>
-          <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+          <button type="submit" class="btn btn-primary col-3 mb-2 mx-3"><i class="bi bi-images mx-2"></i>>Зарегистрироваться</button>
           </form>
       </div>
 </form>

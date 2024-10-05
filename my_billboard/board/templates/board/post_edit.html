@@ -1,51 +1,38 @@
 {% extends 'board/base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
-
-<!--<div class="container">-->
-<!--    <form action="" method="post">-->
-<!--        <legend>{{title}}</legend>-->
-<!--        <label>{% csrf_token %}</label>-->
-<!--        <label>{{ form.as_p }}</label>-->
-<!--        <label>-->
-<!--            <button type="submit">Редактировать</button>-->
-<!--        </label>-->
-<!--    </form>-->
-<!--    <br>-->
-<!--    <a href="{% url 'board:index'%}"><h3>На главную страницу</h3></a>-->
-<!--</div>-->
 
 <h2 style="text-align: center;">Редактировать объявление</h2>
 <form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-<!--    {{ form.as_p }}-->
-<!--    {% crispy form %}-->
-
     <div class="container p-5">
-      <form action="" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          <div class="row">
-            <div class="col-lg-6 col-md-12">
-               {{form.author|as_crispy_field}}
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    {{form.author|as_crispy_field}}
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    {{form.title|as_crispy_field}}
+                </div>
             </div>
-            <div class="col-lg-6 col-md-12">
-              {{form.title|as_crispy_field}}
+            <div class="row">
+                {{form.text|as_crispy_field}}
             </div>
-          </div>
-          <div class="row">
-              {{form.text|as_crispy_field}}
-          </div>
-          <div class="row">
-              {{form.image|as_crispy_field}}
-          </div>
-             <div class="row">
-              {{form.url_adders|as_crispy_field}}
-          </div>
-          <button type="submit" class="btn btn-primary">Редактировать</button>
-          </form>
-      </div>
+            <div>
+                {% if form.image %}
+<!--                    <p><img width="150px" height="200px" src="/media/posts/{{form.image}}"></p>-->
+                 {{form.image|as_crispy_field}}
+                {% endif %}
+            </div>
+            <div class="row">
+                {{form.url_adders|as_crispy_field}}
+            </div>
+            <button type="submit" class="btn btn-primary">Редактировать</button>
+        </form>
+    </div>
 </form>
 
-    {% endblock content %}
+{% endblock content %}
 
 

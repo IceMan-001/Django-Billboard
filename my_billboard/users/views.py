@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import update_session_auth_hash
 from my_billboard.settings import LOGIN_REDIRECT_URL
-from .forms import UserRegistrationForm, CustomPasswordChangeForm
+from .forms import UserRegistrationForm, CustomPasswordChangeForm, UserProfileForm
 from .models import CustomUser
 
 User = get_user_model()
@@ -17,7 +17,7 @@ def register(request):
     # если нажали кнопку регистрации (метод POST)
     if request.method == 'POST':
         # создаем объект с данными из запроса
-        user_form = UserRegistrationForm(request.POST)
+        user_form = UserRegistrationForm(request.POST, request.FILES)
         # Валидация формы (правильность введенных данных)
         if user_form.is_valid():
             # Создание объекта с полями формы (без сохранения в БД)
@@ -82,13 +82,13 @@ def user_detail(request, pk):
 def user_edit(request, pk):
     user = get_object_or_404(CustomUser, pk=pk)  # получить объект по ключу
     if request.method == 'POST':
-        form = UserRegistrationForm(data=request.POST, instance=user)
+        form = UserProfileForm(data=request.POST, instance=user, files=request.FILES)
         if form.is_valid():
             form.save()
-            return user_detail(request)
+            return user_detail(request, pk=pk)
 
     else:
-        form = UserRegistrationForm(instance=user)
+        form = UserProfileForm(instance=user)
     context = {
             'form': form,
             'title': 'Редактировать данные пользователя'
