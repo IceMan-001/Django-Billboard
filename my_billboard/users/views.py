@@ -90,14 +90,15 @@ def user_edit(request, pk):
     else:
         form = UserProfileForm(instance=user)
     context = {
-            'form': form,
-            'title': 'Редактировать данные пользователя'
-        }
+        'form': form,
+        'title': 'Редактировать данные пользователя'
+    }
     return render(request, template_name='users/user_edit.html', context=context)
 
 
 def change_password(request):
     if request.method == 'POST':
+        is_valid = True
         form = CustomPasswordChangeForm(request.POST)
 
         if form.is_valid():
@@ -105,19 +106,26 @@ def change_password(request):
             new_password = form.cleaned_data['new_password_1']
 
             if request.user.check_password(old_password):
+                if form.cleaned_data['new_password_1'] != form.cleaned_data['new_password_2']:
+                    form.add_error('new_password_1', 'Пароли не совпадают!')
+                    is_valid = False
+
+                if not is_valid:
+                    return render(request, template_name='users/change_password.html', context={'form': form})
+
                 request.user.set_password(new_password)
                 request.user.save()
                 update_session_auth_hash(request, request.user)
                 return redirect('board:index')
 
             else:
-                form.add_error('old_password', 'Старый пароль неверный')
-                return redirect('users:change_password')
+                form.add_error('old_password', 'Старый пароль неверный!')
+                return render(request, template_name='users/change_password.html', context={'form': form})
 
-        return redirect('users:change_password')
+        context = {'form': form}
+        return render(request, template_name='users/change_password.html', context=context)
 
     else:
         form = CustomPasswordChangeForm()
         context = {'title': 'Сменить пароль', 'form': form}
         return render(request, template_name='users/change_password.html', context=context)
-

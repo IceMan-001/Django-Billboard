@@ -4,35 +4,29 @@
 {% block content %}
 
 <h2 style="text-align: center;">Добавить новое объявление</h2>
-<!--<form action="" method="post" enctype="multipart/form-data">-->
-<!--    {% csrf_token %}-->
-<!--    {{ form.as_p }}-->
-<!--    {% crispy form %}-->
 
-    <div class="container p-5">
-      <form action="" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          <div class="row">
+<div class="container p-5">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
             <div class="col-lg-6 col-md-12">
-               {{form.author|as_crispy_field}}
+                {{form.author|as_crispy_field}}
             </div>
             <div class="col-lg-6 col-md-12">
-              {{form.title|as_crispy_field}}
+                {{form.title|as_crispy_field}}
             </div>
-          </div>
-          <div class="row">
-              {{form.text|as_crispy_field}}
-          </div>
-          <div class="row">
-              {{form.image|as_crispy_field}}
-          </div>
-             <div class="row">
-              {{form.url_adders|as_crispy_field}}
-          </div>
-          <button  type="submit" class="btn btn-primary col-3 mb-2 mx-3"><i class="bi bi-images mx-2"></i>>Добавить</button>
-          </form>
-      </div>
-<!--</form>-->
-
+        </div>
+        <div class="row">
+            {{form.text|as_crispy_field}}
+        </div>
+        <div class="row">
+            {{form.image|as_crispy_field}}
+        </div>
+        <div class="row">
+            {{form.url_adders|as_crispy_field}}
+        </div>
+        <button type="submit" class="btn btn-primary col-3 mb-2 mx-3"><i class="bi bi-images mx-2"></i>Добавить</button>
+    </form>
+</div>
 
 {% endblock content %}
