@@ -8,23 +8,29 @@ from .forms import PostForm
 from .models import Post
 
 
-# Create your views here.
-def root(request):
-    posts = Post.objects.all()
-    context = {
-        'title': 'Объявления',
-        'posts': posts
-    }
-    return render(request, template_name='board/index.html', context=context)
+class PostHomeViews(ListView):
+    model = Post
+    template_name = 'board/index.html'
+    context_object_name = 'posts'
+    extra_context = {'title': 'Главная страница'}
 
 
-def index(request):
-    posts = Post.objects.all()
-    context = {
-        'title': 'Объявления',
-        'posts': posts
-    }
-    return render(request, template_name='board/index.html', context=context)
+# def root(request):
+#     posts = Post.objects.all()
+#     context = {
+#         'title': 'Объявления',
+#         'posts': posts
+#     }
+#     return render(request, template_name='board/index.html', context=context)
+#
+#
+# def index(request):
+#     posts = Post.objects.all()
+#     context = {
+#         'title': 'Объявления',
+#         'posts': posts
+#     }
+#     return render(request, template_name='board/index.html', context=context)
 
 
 def about(request):

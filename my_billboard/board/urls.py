@@ -1,10 +1,13 @@
 from django.urls import path
-from board.views import index, about, contacts, add_post, post_list_in_table, post_list, post_detail, post_edit, \
-    post_delete
+# from board.views import index, about, contacts, add_post, post_list_in_table, post_list, post_detail, post_edit, \
+#     post_delete
+from board.views import about, contacts, add_post, post_list_in_table, post_list, post_detail, post_edit, post_delete
+from board.views import PostHomeViews
 
 app_name = 'board'
 urlpatterns = [
-    path('', index, name='index'),
+    path('', PostHomeViews.as_view(), name='index'),
+    # path('', index, name='index'),
     path('about/', about, name='about'),
     path('contacts/', contacts, name='contacts'),
     path('post/add', add_post, name='add_post'),

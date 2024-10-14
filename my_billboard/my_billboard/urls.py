@@ -16,12 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from board.views import root
+from board.views import PostHomeViews
 from my_billboard import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', root),
+    path('', PostHomeViews.as_view()),
     path('admin/', admin.site.urls),
     path('board/', include('board.urls')),
     path('users/', include('users.urls')),
