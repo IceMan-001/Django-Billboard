@@ -2,22 +2,14 @@
 {% load static %}
 {% block content %}
 
-<style>
-    .style-2 {
-    list-style-type: "\1F7E2";
-    }
-    html, body {
-    background-color: #75b798;
-    }
-</style>
 
-<div class="card border-light mb-3 ms-5 mt-5" style="max-width: 18rem;">
-  <div class="card-header"><h3>Это страница о нас</h3></div>
-    <img src="{% static 'img/rag-dolls-gray-and-one-blue-front.jpg' %}" class="card-img-top" alt="...">
-  <div class="card-body text-success">
-    <h5 class="card-title">Автор - <i>{{name}} {{lastname}}</i></h5>
-    <p class="card-text">Электронный адрес - <i>{{email}}</i></p>
-     <a href="{% url 'board:index'%}" class="btn btn-primary">На главную страницу</a>
-  </div>
-</div>
+ <div class="mt-4 container-fluid bg-dark">
+        <h1 class="text-success">Это страница о нас</h1>
+        <img src="{% static 'img/collection_branding.jpg' %}" class="img-fluid" alt="...">
+        <p class="text-light">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        <p class="text-light">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+    <h5 class="text-light">Автор - <i>{{name}} {{lastname}}</i></h5>
+    <p class="text-light">Электронный адрес - <i>{{email}}</i></p>
+    </div>
+ <a href="{% url 'board:index'%}" class="btn btn-primary">На главную страницу</a>
 {% endblock content %}

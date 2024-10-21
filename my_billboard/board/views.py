@@ -32,7 +32,7 @@ def about(request):
         'name': 'Ivan',
         'lastname': 'Ivanov',
         'email': 'ivanivanov@yandex.ru',
-
+        'title': 'Страница о нас',
     }
     return render(request, template_name='board/about.html', context=context)
 
