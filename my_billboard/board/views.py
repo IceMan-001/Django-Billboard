@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.generic import ListView
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 from .forms import PostForm
 from .models import Post
@@ -122,9 +123,9 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post, author=request.user, )
     context = {
-            'form': form,
-            'title': 'Редактировать объявление'
-        }
+        'form': form,
+        'title': 'Редактировать объявление'
+    }
 
     return render(request, template_name='board/post_edit.html', context=context)
 
@@ -136,6 +137,18 @@ def post_delete(request, pk):
         post.delete()
         return redirect('board:post_list')
     return render(request, template_name="board/post_delete.html", context={'post': post})
+
+
+def product_search(request):
+    query = request.GET.get('query')
+    query_text = Q(title__contains=query) & Q(title__icontains=query)
+
+    results = Post.objects.filter(query_text)
+    # categories = Category.objects.all()
+
+    context = {'posts': results}
+
+    return render(request, template_name="board/index.html", context=context)
 
 
 def forbidden(request, exception):

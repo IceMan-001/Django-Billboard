@@ -1,6 +1,6 @@
 from django.urls import path
 from board.views import index, about, contacts, add_post, post_list_in_table, post_list, post_detail, post_edit, \
-    post_delete
+    post_delete, product_search
 
 app_name = 'board'
 urlpatterns = [
@@ -13,4 +13,5 @@ urlpatterns = [
     path('posts/<slug:slug>/', post_detail, name='post_detail'),
     path('posts/<int:pk>/edit/', post_edit, name='post_edit'),
     path('posts/<int:pk>/delete/', post_delete, name='post_delete'),
+    path('search/', product_search, name="product_search"),
 ]
