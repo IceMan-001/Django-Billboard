@@ -4,20 +4,24 @@
 
 <style>
     body {
-    background-color: beige!important;
-}
-a {
-    color: green!important;
-}
-p {
-    font-style: italic!important;
-}
-img {
-    width: 200px;
-}
-h2 {
-    text-decoration: underline;
-}
+        background-color: beige !important;
+    }
+
+    a {
+        color: green !important;
+    }
+
+    p {
+        font-style: italic !important;
+    }
+
+    img {
+        width: 200px;
+    }
+
+    h2 {
+        text-decoration: underline;
+    }
 </style>
 
 <div class="container">
@@ -25,16 +29,16 @@ h2 {
         <p></p>
         {% for post in posts %}
         <div class="col-6 bg-light text-dark text-center">
-             <h4 class="text-uppercase">Объявление №{{post.id}}</h4>
+            <h4 class="text-uppercase">Объявление №{{post.id}}</h4>
             <h4 class="text-center  my-3">Автор {{post.author}}</h4>
             <h4>Заглавие:</h4>
-                <br>
-                <h5><i>{{post.title}}</i></h5>
-           <p></p>
+            <br>
+            <h5><i>{{post.title}}</i></h5>
+            <p></p>
             <div class="text-center">
                 {% if post.image %}
-                        <a href="{{ post.get_absolute_url }}" class="card__image">
-                            <img width="200px" height="150px" src="{{post.image.url}}"></a>
+                <a href="{{ post.get_absolute_url }}" class="card__image">
+                    <img width="200px" height="150px" src="{{post.image.url}}"></a>
                 {% endif %}
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-images my-3"
@@ -44,7 +48,15 @@ h2 {
             </svg>
             <p>{{post.text}}</p>
             <p>Дата создания поста: <i>{{post.created_at}}</i></p>
-            <a href="{{ post.url_adders }}">Подробнее...</a>
+
+            <a href="{{post.url_adders}}" class="btn">Подробнее</a>
+
+            <a href="#" class="btn">Добавлено
+               </a>
+
+            <a href="#" class="btn">В корзину</a>
+
+
             <hr>
         </div>
         {% endfor %}
