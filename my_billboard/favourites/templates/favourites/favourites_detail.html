@@ -4,6 +4,59 @@
 {% block title %}
 <link href="{% static 'css/style_table.css' %}" rel="stylesheet" type="text/css">
 {% endblock title %}
+<style>
+    table {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+        font-size: 14px;
+        border-radius: 10px;
+        border-spacing: 0;
+        text-align: center;
+        margin: 0 auto
+    }
+
+    th {
+        background: #BCEBDD;
+        color: white;
+        text-shadow: 0 1px 1px #2D2020;
+        padding: 10px 20px;
+    }
+
+    th, td {
+        border-style: solid;
+        border-width: 0 1px 1px 0;
+        border-color: white;
+    }
+
+    th:first-child, td:first-child {
+        text-align: left;
+    }
+
+    th:first-child {
+        border-top-left-radius: 10px;
+    }
+
+    th:last-child {
+        border-top-right-radius: 10px;
+        border-right: none;
+    }
+
+    td {
+        padding: 10px 20px;
+        background: #F8E391;
+    }
+
+    tr:last-child td:first-child {
+        border-radius: 0 0 0 10px;
+    }
+
+    tr:last-child td:last-child {
+        border-radius: 0 0 10px 0;
+    }
+
+    tr td:last-child {
+        border-right: none;
+    }
+</style>
 
 {% block content %}
 
@@ -26,13 +79,13 @@
         {% for post in posts %}
         <tr>
             <td>
-                <h3>{{post.author}}</h3>
+                <h3>Автор поста {{post.author}}</h3>
             </td>
             <td>
-                <h3>{{post.title}}</h3>
+                <h3>Название поста{{post.title}}</h3>
             </td>
             <td>
-                <h3>{{post.text}}</h3>
+                <h3>Текст поста{{post.text}}</h3>
             </td>
             <td>
                 <h3>{{post.created_at}}</h3>

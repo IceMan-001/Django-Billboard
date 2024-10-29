@@ -9,10 +9,9 @@ class FavouritesUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
-class CartItem(models.Model):
-    cart = models.ForeignKey(FavouritesUser, on_delete=models.CASCADE)
-    product = models.ForeignKey(Post, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+class FavouritesItem(models.Model):
+    favourites = models.ForeignKey(FavouritesUser, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
