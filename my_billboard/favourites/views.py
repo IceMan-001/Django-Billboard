@@ -25,7 +25,7 @@ class Favourites:
     def add(self, post):
         # получаем id товара из ОБЪЕКТА товара
         post_id = str(post.id)
-
+        # проверка есть-ли этот пост в избранном ????
         if post_id not in self.favourites:
             self.favourites[post_id] = {
                 'post': str(post.title)
