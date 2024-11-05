@@ -61,10 +61,9 @@
 {% block content %}
 
 <div>
-    <h2 class="how">Список объявлений</h2>
     <table>
         <caption></caption>
-        <colgroup></colgroup>
+        <colgroup><h3 class="how">Список объявлений</h3></colgroup>
         <thead>
         <tr>
             <th><h2>Автор</h2></th>
@@ -102,7 +101,6 @@
     </table>
 </div>
 <hr>
-<a href="{% url 'board:index'%}"><h2>На главную страницу</h2></a>
 
 <div style="width:80%; text-align:justify; margin:0 auto;">
     <div>Постов в избранном: {{ cart|length }}</div>

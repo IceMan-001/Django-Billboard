@@ -51,9 +51,9 @@
 
             <a href="{{post.url_adders}}" class="btn">Подробнее</a>
 
-            <a href="#" class="btn">Добавлено</a>
+            <a href="#" class="btn">В избранном</a>
 
-            <a href="#" class="btn">В корзину</a>
+            <a href="{% url 'board:favourites_to_add' post.slug %}" class="btn">В избранное</a>
 
 
             <hr>

@@ -17,6 +17,7 @@ class Favourites:
             favourites = self.session[FAVOURITES_SESSION_ID] = {}
         self.favourites = favourites
 
+
     # сохранение изменений в сессию
     def save(self):
         self.session.modified = True
@@ -28,9 +29,8 @@ class Favourites:
         # проверка есть-ли этот пост в избранном ????
         if post_id not in self.favourites:
             self.favourites[post_id] = {
-                'post': str(post.title)
+                'post': str(post.id)
             }
-
         self.save()
 
     # удаление товара из корзины
@@ -75,9 +75,10 @@ def favourites_add(request, slug):
     favourites = Favourites(request)
 
     post = get_object_or_404(Post, slug=slug)
+    print(post)
     favourites.add(post=post)
 
-    return redirect('index')
+    return redirect('board:index')
 
 
 def favourites_detail(request):
