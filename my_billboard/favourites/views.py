@@ -71,15 +71,11 @@ class Favourites:
 
 
 def favourites_add(request, slug):
-    # создаем корзину (получаем из сессии)
-    favourites = Favourites(request)
-
     post = get_object_or_404(Post, slug=slug)
+    favourites = Favourites(request)
     favourites.add(post=post)
-
-    return redirect('index')
+    return redirect('board:index')
 
 
 def favourites_detail(request):
-    favourites = Favourites(request)
-    return render(request, template_name='favourites/favourites_detail.html', context={'favourites': favourites})
+    return render(request, template_name='favourites/favourites_detail.html')

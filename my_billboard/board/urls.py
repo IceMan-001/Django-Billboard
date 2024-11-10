@@ -16,5 +16,5 @@ urlpatterns = [
     path('posts/<int:pk>/edit/', post_edit, name='post_edit'),
     path('posts/<int:pk>/delete/', post_delete, name='post_delete'),
     path('search/', product_search, name="product_search"),
-    path('<slug:slug>/addToFavourites/', favourites_add, name='favourites_to_add'),
+    path('<slug:slug>/addToFavourites/', favourites_add, name='add_to_favourites'),
 ]

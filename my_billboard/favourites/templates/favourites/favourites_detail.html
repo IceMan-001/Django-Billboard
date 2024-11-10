@@ -67,16 +67,16 @@
         <colgroup></colgroup>
         <thead>
         <tr>
-            <th><h2>Автор</h2></th>
-            <th><h2>Заголовок</h2></th>
-            <th><h2>Текст объявления</h2></th>
-            <th><h2>Дата объявления</h2></th>
-            <th><h2>Сайт</h2></th>
-            <th><h2>Изображение</h2></th>
+<!--            <th><h2>Автор</h2></th>-->
+<!--            <th><h2>Заголовок</h2></th>-->
+<!--            <th><h2>Текст объявления</h2></th>-->
+<!--            <th><h2>Дата объявления</h2></th>-->
+<!--            <th><h2>Сайт</h2></th>-->
+<!--            <th><h2>Изображение</h2></th>-->
         </tr>
         </thead>
         <tbody>
-        {% for post in posts %}
+        {% for post in favourites %}
         <tr>
             <td>
                 <h3>Автор поста {{post.author}}</h3>
@@ -102,7 +102,7 @@
     </table>
 </div>
 <hr>
-<a href="{% url 'board:index'%}"><h2>На главную страницу</h2></a>
+
 
 <div style="width:80%; text-align:justify; margin:0 auto;">
     <div>Постов в избранном: {{ cart|length }}</div>

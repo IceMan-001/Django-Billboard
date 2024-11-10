@@ -51,11 +51,12 @@
 
             <a href="{{post.url_adders}}" class="btn">Подробнее</a>
 
-            <a href="#" class="btn">Добавлено</a>
-
-            <a href="#" class="btn">В корзину</a>
+            <a href="{% url 'board:add_to_favourites' post.slug %}" class="btn">Добавлено</a>
 
 
+            <form class="form_style" action="{% url 'board:add_to_favourites' post.slug %}" method="get" target="_self">
+                <button type="submit">В избранное</button>
+            </form>
             <hr>
         </div>
         {% endfor %}
