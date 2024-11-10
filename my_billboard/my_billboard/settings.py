@@ -145,7 +145,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-FAVOURITES_SESSION_ID = 'favourites'
+FAVOURITES_SESSION_ID = 'favourites'  # переменная для хранения сессии не авторизованного пользователя
 
 AUTH_USER_MODEL = "users.CustomUser"
 
